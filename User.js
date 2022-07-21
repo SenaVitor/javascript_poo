@@ -31,19 +31,31 @@ export default class User{
     get ativo(){
         return this.#ativo;
     }
-    
-    #montaObjUser(){
-        return ({
-            nome: this.#nome,
-            email: this.#email, 
-            nascimento: this.#nascimento, 
-            role: this.#role,
-            ativo: this.#ativo
-        })
+
+    set nome(nome){
+        if(nome === ''){
+            throw new Error('formato inválido');
+        }
+        this.#nome = nome;
+    }
+
+    set email(email){
+        this.#email = email;
+    }
+
+    set nascimento(nascimento){
+        this.#nascimento = nascimento;
+    }
+
+    set role(role){
+        this.#role = role;
+    }
+
+    set ativo(ativo){
+        this.#ativo = ativo;
     }
 
     exibirInfos(){
-        const objUser = this.#montaObjUser();
-        return `${objUser.nome}, ${objUser.email}, ${objUser.nascimento}, ${objUser.role}, ${objUser.ativo}`;
+        return `${this.nome}, ${this.email}, ${this.nascimento}, ${this.role}, ${this.ativo}`;
     }
 }
